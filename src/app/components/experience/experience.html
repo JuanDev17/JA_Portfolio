@@ -1,0 +1,52 @@
+
+<section class="experience" id="experience">
+  <div class="experience-container">
+
+    <!-- Animated heading -->
+    <div appScrollReveal>
+      <span class="section-label">MY JOURNEY</span>
+      <h2>Where I've Worked<span>.</span></h2>
+    </div>
+
+    <div class="timeline">
+      @for (job of experiences; track job.id; let i = $index) {
+        <article
+          class="timeline-item"
+          appScrollReveal
+          [delay]="i * 0.15"
+        >
+
+          <div class="timeline-marker"></div>
+
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="period">{{ job.period }}</span>
+
+              @if (job.current) {
+                <span class="current-badge">Current</span>
+              }
+            </div>
+
+            <h3>{{ job.role }}</h3>
+
+            <p class="company">
+              {{ job.company }} · {{ job.location }}
+            </p>
+
+            <p class="description">
+              {{ job.description }}
+            </p>
+
+            <div class="tech-stack">
+              @for (tech of job.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

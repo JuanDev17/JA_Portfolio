@@ -1,0 +1,58 @@
+<header class="navbar">
+  <div class="navbar-content">
+
+    <a href="#home" class="logo">
+      JA<span>.</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+
+      <!-- Theme toggle -->
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        @if (isDarkMode()) {
+          ☀
+        } @else {
+          ☾
+        }
+      </button>
+
+      <!-- Mobile menu toggle -->
+      <button
+        type="button"
+        class="menu-toggle"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen()"
+        [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'"
+        aria-controls="mobile-navigation"
+      >
+        {{ isMenuOpen() ? '✕' : '☰' }}
+      </button>
+
+    </div>
+  </div>
+
+  @if (isMenuOpen()) {
+    <nav
+      id="mobile-navigation"
+      class="mobile-nav"
+      aria-label="Mobile navigation"
+    >
+      <a href="#work" (click)="closeMenu()">Work</a>
+      <a href="#experience" (click)="closeMenu()">Experience</a>
+      <a href="#about" (click)="closeMenu()">About</a>
+      <a href="#contact" (click)="closeMenu()">Contact</a>
+    </nav>
+  }
+</header>

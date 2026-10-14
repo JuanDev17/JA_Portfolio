@@ -1,0 +1,175 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  background-color: var(--primary-background);
+  border-bottom: 1px solid var(--border-color);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+// Navbar Layout
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 1rem 1.5rem;
+}
+
+// Logo
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  text-decoration: none;
+  color: var(--primary-text);
+
+  transition:
+    color 250ms ease,
+    letter-spacing 200ms ease;
+
+  span {
+    color: var(--primary-button);
+  }
+
+  &:hover {
+    letter-spacing: -0.04em;
+  }
+}
+
+// Desktop Navigation
+.nav-links {
+  display: none;
+
+  a {
+    color: var(--primary-text);
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: color 200ms ease;
+
+    &:hover {
+      color: var(--primary-navigation);
+    }
+  }
+}
+
+// Theme Toggle + Hamburger
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle,
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 200ms ease,
+    color 250ms ease;
+
+  &:hover {
+    background-color: var(--secondary-background);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-navigation);
+    outline-offset: 3px;
+  }
+}
+
+// Mobile Navigation
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem;
+  background-color: var(--secondary-background);
+
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+
+  a {
+    display: block;
+    padding: 0.875rem 1rem;
+
+    color: var(--primary-text);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 0.5rem;
+
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+
+    &:hover {
+      background-color: var(--primary-button);
+      color: #071321;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-navigation);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Tablet + Desktop
+@media (min-width: 768px) {
+  .navbar-content {
+    padding: 1.25rem 3rem;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .menu-toggle,
+  .mobile-nav {
+    display: none;
+  }
+}
+
+// Reduced Motion Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .logo,
+  .nav-links a,
+  .theme-toggle,
+  .menu-toggle,
+  .mobile-nav,
+  .mobile-nav a {
+    transition: none;
+  }
+}

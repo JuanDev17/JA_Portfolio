@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+
+:root {
+  // Knicks Colors
+  --primary-button: #F58426;
+  --primary-navigation: #006BB6;
+
+  // Backgrounds
+  --primary-background: #F8F7F4;
+  --secondary-background: #FFFFFF;
+
+  // Text
+  --primary-text: #071321;
+  --secondary-text: #64748B;
+
+  // Borders
+  --border-color: #E5E7EB;
+
+  
+  --hero-image: url('/assets/empire-light.jpg');
+
+
+}
+
+// Dark Mode
+[data-theme="dark"] {
+  --primary-button: #F58426;
+  --primary-navigation: #4DA8E8;
+
+  --primary-background: #071321;
+  --secondary-background: #111E2E;
+
+  --primary-text: #F8F7F4;
+  --secondary-text: #A1AABB;
+
+  --border-color: #293548;
+
+    --hero-image: url('/assets/empire-dark.jpg');
+
+}
+
+body,
+.navbar,
+.hero,
+.project-card {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .navbar,
+  .hero,
+  .project-card {
+    transition: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+}
+
