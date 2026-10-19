@@ -2,7 +2,6 @@
 <section class="experience" id="experience">
   <div class="experience-container">
 
-    <!-- Animated heading -->
     <div appScrollReveal>
       <span class="section-label">MY JOURNEY</span>
       <h2>Where I've Worked<span>.</span></h2>
@@ -15,19 +14,22 @@
           appScrollReveal
           [delay]="i * 0.15"
         >
+          <div class="timeline-date">
+            <span class="period">{{ job.period }}</span>
+          </div>
 
           <div class="timeline-marker"></div>
 
           <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="period">{{ job.period }}</span>
+            
+<div class="job-heading">
+  <h3>{{ job.role }}</h3>
 
-              @if (job.current) {
-                <span class="current-badge">Current</span>
-              }
-            </div>
+  @if (job.current) {
+    <span class="current-badge">Current</span>
+  }
+</div>
 
-            <h3>{{ job.role }}</h3>
 
             <p class="company">
               {{ job.company }} · {{ job.location }}
@@ -43,7 +45,6 @@
               }
             </div>
           </div>
-
         </article>
       }
     </div>

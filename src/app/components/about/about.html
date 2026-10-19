@@ -1,47 +1,38 @@
-
 <section class="about" id="about">
   <div class="about-container">
-
     <!-- Animated heading -->
     <div appScrollReveal>
       <span class="section-label">A LITTLE ABOUT ME</span>
 
-      <h2>
-        More than just code<span>.</span>
-      </h2>
+      <h2>More than just code<span>.</span></h2>
     </div>
 
     <div class="about-grid">
-
       <!-- Introduction -->
       <div class="about-content" appScrollReveal>
         <h3>Hey, I'm Juan 👋</h3>
 
         <p>
-          I'm a software engineer based in New York City,
-          passionate about building intuitive and interactive
-          web experiences.
+          I'm a Software Engineer based in New York City, focused on building modern, intuitive, and
+          user-friendly applications.
         </p>
 
         <p>
-          I enjoy learning new technologies, solving problems,
-          and bringing ideas to life through code.
+          My experience is primarily in frontend development, but I'm continuously expanding my
+          skills across backend technologies and full-stack development. I enjoy solving problems,
+          learning new technologies, and turning ideas into functional applications.
         </p>
 
         <p>
-          Outside of work, I'm constantly exploring new ideas,
-          building personal projects, and finding ways to
-          improve my skills.
+          Outside of work, I enjoy experimenting with new tools, working on personal projects, and
+          challenging myself to become a better developer.
         </p>
       </div>
 
       <!-- Skills card -->
-      <div
-        class="skills-card"
-        appScrollReveal
-        [delay]="0.2"
-      >
+      <div class="skills-card">
         <h3>My Toolkit</h3>
+        <p class="skills-subtitle">Technologies I work with</p>
 
         <div class="skills-list">
           @for (skill of skills; track skill) {
@@ -49,7 +40,6 @@
           }
         </div>
       </div>
-
     </div>
   </div>
 </section>

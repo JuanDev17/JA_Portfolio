@@ -1,27 +1,52 @@
+
 .contact {
-  padding: 6rem 1.5rem;
+  padding: 3rem 1rem;
   background: var(--primary-background);
-  color: var(--primary-text);
-  text-align: center;
 }
 
 .contact-container {
-  max-width: 750px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
   margin-inline: auto;
+  padding: 2.5rem 1.5rem;
+
+  overflow: hidden;
+  border-radius: 1.25rem;
+
+  background: var(--secondary-background);
+  border: 1px solid var(--border-color);
+  color: var(--primary-text);
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-width: 0;
+  max-width: 680px;
 }
 
 .section-label {
-  color: var(--primary-button);
+  color: var(--primary-navigation);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.15;
   letter-spacing: -0.04em;
-  margin: 1.5rem 0;
+  margin: 0.75rem 0 1rem;
+  overflow-wrap: break-word;
 
   span {
     color: var(--primary-button);
@@ -29,41 +54,128 @@ h2 {
 }
 
 p {
-  max-width: 550px;
-  margin: 0 auto 2rem;
+  max-width: 500px;
   color: var(--secondary-text);
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .contact-button {
+  position: relative;
+  z-index: 2;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.75rem;
 
-  padding: 1rem 2rem;
-  border-radius: 999px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem 1.75rem;
+  border-radius: 0.75rem;
 
   background: var(--primary-button);
   color: #071321;
 
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
 
-  transition: transform 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+
+  span {
+    transition: transform 200ms ease;
+  }
 
   &:hover {
     transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245, 132, 38, 0.25);
+
+    span {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--primary-navigation);
+    outline-offset: 4px;
   }
 }
 
-@media (min-width: 768px) {
+// Decorative Knicks accent
+.contact-container::after {
+  content: "";
+  position: absolute;
+  right: -100px;
+  bottom: -180px;
+
+  box-sizing: border-box;
+  width: 350px;
+  height: 350px;
+
+  border: 65px solid var(--primary-navigation);
+  opacity: 0.08;
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+// Tablet
+@media (min-width: 600px) {
   .contact {
-    padding: 8rem 3rem;
+    padding: 4rem 2rem;
+  }
+
+  .contact-container {
+    padding: 3rem;
+  }
+
+  .contact-button {
+    width: auto;
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) {
+  .contact {
+    padding: 6rem 3rem;
+  }
+
+  .contact-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 4rem;
+  }
+
+  .contact-content {
+    flex: 1;
+  }
+
+  .contact-button {
+    flex-shrink: 0;
+  }
+}
+
+// Small mobile
+@media (max-width: 380px) {
+  .contact-container {
+    padding: 2rem 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.85rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-button {
+  .contact-button,
+  .contact-button span {
     transition: none;
   }
 }

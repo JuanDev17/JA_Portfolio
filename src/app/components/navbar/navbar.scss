@@ -1,3 +1,4 @@
+
 .navbar {
   position: sticky;
   top: 0;
@@ -39,7 +40,9 @@
     color: var(--primary-button);
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
+    color: var(--text-hover);
     letter-spacing: -0.04em;
   }
 }
@@ -47,16 +50,50 @@
 // Desktop Navigation
 .nav-links {
   display: none;
+ 
 
   a {
+    position: relative;
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
 
     transition: color 200ms ease;
 
-    &:hover {
-      color: var(--primary-navigation);
+    &:hover,
+    &:focus-visible {
+      color: var(--text-hover);
+    }
+
+    // Animated underline
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: var(--text-hover);
+      transform: scaleX(0);
+      transform-origin: left;
+
+      transition: transform 200ms ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    // Active navigation link
+    &.active {
+      color: var(--text-hover);
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
@@ -90,14 +127,16 @@
 
   transition:
     background-color 200ms ease,
-    color 250ms ease;
+    color 200ms ease;
 
   &:hover {
     background-color: var(--secondary-background);
+    color: var(--text-hover);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--primary-navigation);
+    color: var(--text-hover);
+    outline: 2px solid var(--text-hover);
     outline-offset: 3px;
   }
 }
@@ -106,11 +145,12 @@
 .mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.75rem;
 
-  padding: 1rem;
-  background-color: var(--secondary-background);
+  padding: 1.5rem;
 
+  background-color: var(--primary-background);
   border-top: 1px solid var(--border-color);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 
@@ -119,29 +159,58 @@
     border-color 250ms ease;
 
   a {
-    display: block;
-    padding: 0.875rem 1rem;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 0;
 
     color: var(--primary-text);
     text-decoration: none;
     font-weight: 500;
-    border-radius: 0.5rem;
 
-    transition:
-      background-color 200ms ease,
-      color 200ms ease;
+    transition: color 200ms ease;
 
-    &:hover {
-      background-color: var(--primary-button);
-      color: #071321;
+    // Animated orange underline
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: var(--text-hover);
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--text-hover);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    // Active link
+    &.active {
+      color: var(--text-hover);
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
 
     &:focus-visible {
-      outline: 2px solid var(--primary-navigation);
-      outline-offset: 2px;
+      outline: 2px solid var(--text-hover);
+      outline-offset: 4px;
     }
   }
 }
+
 
 // Tablet + Desktop
 @media (min-width: 768px) {
@@ -166,6 +235,7 @@
   .navbar,
   .logo,
   .nav-links a,
+  .nav-links a::after,
   .theme-toggle,
   .menu-toggle,
   .mobile-nav,

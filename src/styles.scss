@@ -8,8 +8,8 @@
 
 :root {
   // Knicks Colors
-  --primary-button: #F58426;
-  --primary-navigation: #006BB6;
+  --primary-button: #f58426;
+  --primary-navigation: #006bb6;
 
   // Backgrounds
   --primary-background: #F8F7F4;
@@ -24,6 +24,8 @@
 
   
   --hero-image: url('/assets/empire-light.jpg');
+
+  --text-hover: var(--primary-button);
 
 
 }

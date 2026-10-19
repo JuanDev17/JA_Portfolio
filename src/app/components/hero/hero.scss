@@ -1,64 +1,100 @@
+
 .hero {
+  position: relative;
   min-height: 60vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
 
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
   background: var(--primary-background);
   color: var(--primary-text);
 }
 
-.hero-content {
+.hero-container {
+  position: relative;
+  z-index: 2;
+
   width: 100%;
   max-width: 1100px;
   margin-inline: auto;
 }
 
+// Empire State Building background
+.hero-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 55%;
+  height: 100%;
+
+  background-image: var(--hero-image);
+  background-size: contain;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// Availability indicator
 .availability {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 
+  color: var(--secondary-text);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--secondary-text);
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
+  flex-shrink: 0;
+
   border-radius: 50%;
   background: #22C55E;
 }
 
+// Name
 h1 {
-  font-size: clamp(2.75rem, 7vw, 6rem);
-  line-height: 1.1;
-  letter-spacing: -0.05em;
+  color: var(--primary-text);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
   margin: 1.5rem 0 0;
 }
 
+// Main heading
 h2 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.04em;
+  max-width: 850px;
+  color: var(--primary-text);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
   margin: 0.5rem 0 0;
 }
 
+// Knicks orange accent
 .accent {
   color: var(--primary-button);
 }
 
+// Introduction
 .hero-description {
-  max-width: 600px;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  line-height: 1.7;
+  max-width: 610px;
   color: var(--secondary-text);
-  margin-top: 1.5rem;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.8;
+  margin: 1.75rem 0 0;
 }
 
+// Action buttons
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -69,11 +105,18 @@ h2 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 0.875rem 1.5rem;
     border-radius: 999px;
-    text-decoration: none;
+
+    font-size: 0.95rem;
     font-weight: 600;
-    transition: transform 200ms ease;
+    text-decoration: none;
+
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease;
 
     &:hover {
       transform: translateY(-3px);
@@ -81,30 +124,102 @@ h2 {
   }
 }
 
+// Primary Knicks orange button
 .primary-btn {
   background: var(--primary-button);
   color: #071321;
 }
 
+// Secondary outlined button
 .secondary-btn {
   border: 1px solid var(--border-color);
   color: var(--primary-text);
+
+  &:hover {
+    border-color: var(--primary-navigation);
+  }
 }
 
+// Tablet
 @media (min-width: 768px) {
   .hero {
     padding: 6rem 3rem;
   }
 }
 
+// Mobile
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding: 5rem 1.5rem 4rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 65%;
+    opacity: 0.12;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 7vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+// Small mobile
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    a {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+// Reduced motion
 @media (prefers-reduced-motion: reduce) {
   .hero-actions a {
     transition: none;
   }
 }
 
-.hero-image {
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: center;
+
+.typing-word {
+  display: inline-block;
+  color: var(--primary-button);
+  white-space: nowrap;
+}
+
+.cursor {
+  display: inline;
+  margin-left: 0;
+  color: var(--primary-button);
+  font-weight: 400;
+  animation: blink 800ms step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
 }

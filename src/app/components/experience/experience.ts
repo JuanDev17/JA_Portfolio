@@ -7,9 +7,10 @@ interface ExperienceItem {
   company: string;
   location: string;
   period: string;
-  description: string;
+  description?: string;
   technologies: string[];
   current?: boolean;
+  highlights?: string[];
 }
 
 @Component({
@@ -20,27 +21,42 @@ interface ExperienceItem {
   styleUrl: './experience.scss'
 })
 export class Experience {
-  experiences: ExperienceItem[] = [
-    {
-      id: 1,
-      role: 'Software Engineer',
-      company: 'Bank of America',
-      location: 'New York, NY',
-      period: 'Jul 2024 — Present',
-      description:
-        'Developing enterprise frontend applications and interactive user experiences using Angular and TypeScript.',
-      technologies: ['Angular', 'TypeScript', 'SCSS'],
-      current: true
-    },
-    {
-      id: 2,
-      role: 'Software Engineer Intern',
-      company: 'Bank of America',
-      location: 'New York, NY',
-      period: 'Jan 2024 — Jul 2024',
-      description:
-        'Contributed to software development while gaining experience with enterprise applications and team collaboration.',
-      technologies: []
-    }
-  ];
-}
+
+experiences: ExperienceItem[] = [
+  {
+    id: 1,
+    role: 'Software Engineer',
+    company: 'Bank of America',
+    location: 'New York, NY',
+    period: 'Jul 2024 — Present',
+    highlights: [
+      'Develop and maintain enterprise web applications using Angular and TypeScript.',
+      'Build interactive data visualizations, reusable UI components, and complex data-driven interfaces.',
+      'Collaborate with cross-functional teams to deliver features, troubleshoot issues, and improve application usability.'
+    ],
+    technologies: [
+      'Angular',
+      'TypeScript',
+      'SCSS',
+      'Angular Material'
+    ],
+    current: true
+  },
+  {
+    id: 2,
+    role: 'Software Engineer Intern',
+    company: 'Bank of America',
+    location: 'New York, NY',
+    period: 'Jan 2024 — Jul 2024',
+    highlights: [
+      'Contributed to the development and maintenance of enterprise applications.',
+      'Gained hands-on experience with debugging, code reviews, and collaborative development workflows.',
+      'Worked alongside engineers to understand application architecture and software development practices.'
+    ],
+    technologies: [],
+    current: false
+  }
+];
+
+
+}                                                                                                                   
