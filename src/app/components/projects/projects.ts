@@ -27,7 +27,7 @@ export class Projects {
   id: 1,
   title: 'CookFlip',
   description: 'A food discovery and recipe management application where users can explore, create, and organize recipes. Currently developing the Angular frontend and Spring Boot REST API with PostgreSQL persistence.',
-  image: '/assets/cookflip.png',
+  image: 'assets/cookflip.png',
   technologies: [
     'Angular',
     'TypeScript',
@@ -44,7 +44,7 @@ export class Projects {
   title: 'Contact Management API',
   description:
     'A RESTful contact management application built with Spring Boot and PostgreSQL. Supports CRUD operations, input validation, and persistent database storage.',
-  image: '/assets/contactmanagement.png',
+  image: 'assets/contactmanagement.png',
   technologies: [
     'Java',
     'Spring Boot',
